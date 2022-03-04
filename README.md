@@ -1,4 +1,4 @@
-# Enable TLS in OpenStack using Ansible with Certbot
+# Helper Ansible playbook to aid in Enabling TLS in OpenStack
 
 WIP
 
