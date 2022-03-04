@@ -51,4 +51,4 @@ Populate `./vars/globals.yml` with the needed configuration.
 ansible-playbook deploy.yml
 ```
 
-![Usage](images/usage.png)
+![Usage](images/usage.jpg)
