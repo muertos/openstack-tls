@@ -2,11 +2,26 @@
 
 WIP
 
+This currently handles:
+
+- Creates a private network and subnet
+- Creates an instance on that private network and subnet
+
+TODO:
+
+- Install NGINX to the instance
+- Configure NGINX with a specified domain
+
+The idea is that when the above steps are complete, you are now poised to use
+Kolla Ansible to reconfigure your cloud with TLS on the public domain name.
+
 ## Setup
 
 1. Authentication
 
-   Obtain `clouds.yaml` from your cloud. Ensure it's located as `/etc/openstack/clouds.yaml`.
+   Obtain `clouds.yaml` from your cloud. Ensure it's located as `/etc/openstack/clouds.yaml`. Your password must be hardcoded into this file.
+
+TODO: prefer token auth over using password
 
 2. Create a Python virtual environment
 
