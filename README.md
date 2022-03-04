@@ -27,10 +27,10 @@ pip install -r requirements.txt
 ansible-galaxy collection install -r requirements.yml
 ```
 
-# Configuration
+## Configuration
 
 Populate `./vars/globals.yml` with the needed configuration.
 
-# Using
+## Using
 
     ansible-playbook deploy.yml
