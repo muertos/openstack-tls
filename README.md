@@ -17,11 +17,9 @@ Kolla Ansible to reconfigure your cloud with TLS on the public domain name.
 
 ## Setup
 
-1. Authentication
+1. Authentication (TODO: prefer token auth over using password)
 
    Obtain `clouds.yaml` from your cloud. Ensure it's located as `/etc/openstack/clouds.yaml`. Your password must be hardcoded into this file.
-
-TODO: prefer token auth over using password
 
 2. Create a Python virtual environment
 
