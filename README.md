@@ -6,12 +6,12 @@ WIP
 
 1. Authentication
 
-  Obtain `clouds.yaml` from your cloud. Ensure it's located as `/etc/openstack/clouds.yaml`.
+   Obtain `clouds.yaml` from your cloud. Ensure it's located as `/etc/openstack/clouds.yaml`.
 
 2. Create a Python virtual environment
 
-  python3 -m venv .venv
-  source .venv/bin/activate
+   python3 -m venv .venv
+   source .venv/bin/activate
 
 3. Install Python requirements
 
