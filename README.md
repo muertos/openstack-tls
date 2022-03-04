@@ -3,7 +3,8 @@
 WIP
 
 The idea is to aid in enabling TLS in an OpenStack cloud using a certbot
-instance.
+instance. Once this finishes setting everything up, you only need to run Kolla
+Ansible to finalize the SSL installation.
 
 This playbook currently handles:
 
