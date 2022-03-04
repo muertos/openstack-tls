@@ -1,4 +1,5 @@
 # Deploy a certbot instance on a private network
+# Populate ./vars/globals.yml as needed
 
 - hosts: localhost
 
