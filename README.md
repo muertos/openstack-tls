@@ -2,7 +2,7 @@
 
 WIP
 
-# Setup
+## Setup
 
 1. Authentication
 
