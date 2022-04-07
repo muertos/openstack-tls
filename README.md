@@ -41,6 +41,15 @@ TODO:
    ansible-galaxy collection install -r requirements.yml
    ```
 
+## Setup Copy and Paste
+
+   ```
+   python3 -m venv .venv
+   source .venv/bin/activate
+   pip install -r requirements.txt
+   ansible-galaxy collection install -r requirements.yml
+   ```
+
 ## Configuration
 
 Populate `./vars/globals.yml` with the needed configuration.
