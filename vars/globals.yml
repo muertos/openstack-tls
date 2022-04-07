@@ -7,6 +7,6 @@ dns_nameservers:
   - 8.8.8.8
 instance_name: certbot
 # This is hard-coded, but can we obtain this programatically?
-image_uuid: a6873df9-b993-4078-b77f-bb14aefdcd20
+image_uuid: 50531556-08b8-4a9f-83d5-56d4931984a5
 ssh_key: key
 instance_flavor: c1.micro

@@ -4,7 +4,7 @@
 - hosts: localhost
 
   vars_files:
-    - globals.yml
+    - vars/globals.yml
 
   tasks:
 
