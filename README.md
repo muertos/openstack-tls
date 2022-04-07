@@ -20,9 +20,15 @@ TODO:
 
 1. Authentication (TODO: prefer token auth over using password)
 
-   Obtain `clouds.yaml` from your cloud. Ensure it's located as `/etc/openstack/clouds.yaml`. Your password must be hardcoded into this file.
+   Obtain `clouds.yaml` from your cloud. Ensure it's located as
+   `/etc/openstack/clouds.yaml`. Your OpenStack user's password must be
+   hardcoded into this file.
 
-2. Prepare environment 
+2. The OpenStack cloud must have an SSH public key, which is added to the
+   certbot instance. Define the variable for the public key in
+   `./vars/globals.yml`.
+
+3. Prepare environment 
 
    ```
    python3 -m venv .venv
