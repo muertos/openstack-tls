@@ -25,8 +25,7 @@ TODO:
    hardcoded into this file.
 
 2. The OpenStack cloud must have an SSH public key, which is added to the
-   certbot instance. Adjust the variable for the public key in
-   `./vars/globals.yml`.
+   certbot instance. Adjust `ssh_key` accordingly in `./vars/globals.yml`.
 
 3. Prepare environment 
 
