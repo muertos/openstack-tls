@@ -49,7 +49,6 @@ Populate `./vars/globals.yml` with the needed configuration.
 ## Using
 
 ```
-bash setup.sh
 ansible-playbook deploy.yml
 ```
 
