@@ -12,7 +12,10 @@ This playbook currently handles:
 - Creates an instance on that private network and subnet
 
 TODO:
-
+- Add specified SSH public key to cloud automatically
+- Grab Glance image uuid for Ubuntu 20.04 LTS
+- Create a router, bridge the External network with private
+- Allocate and assign floating IP to instance
 - Install NGINX to the instance
 - Configure NGINX with a specified domain
 
@@ -32,6 +35,7 @@ TODO:
    ```
    python3 -m venv .venv
    source .venv/bin/activate
+   pip install --upgrade pip
    pip install -r requirements.txt
    ansible-galaxy collection install -r requirements.yml
    ```
