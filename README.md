@@ -19,6 +19,7 @@ TODO:
 - Open port 22 within certbot instance
 - Install NGINX to the instance
 - Configure NGINX with a specified domain
+- Prepare Kolla globals for ACME: https://docs.openstack.org/kolla-ansible/victoria/admin/acme.html
 
 ## Setup
 
