@@ -12,7 +12,6 @@ This playbook currently handles:
 - Creates an instance on that private network and subnet
 
 TODO:
-- Add specified SSH, or default to `~/.ssh/id_rsa.pub`, public key to cloud automatically
 - Grab Glance image uuid for Ubuntu 20.04 LTS (make second task/role to handle this?)
 - Create a router, bridge the External network with private
 - Allocate and assign floating IP to instance
