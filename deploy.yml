@@ -8,6 +8,13 @@
 
   tasks:
 
+  - name: Add SSH key
+    openstack.cloud.keypair:
+      cloud: "{{ cloud_name }}"
+      state: present
+      name: "{{ ssh_key }}"
+      public_key_file: "{{ ansible_user_dir }}/.ssh/id_rsa.pub"
+
   - name: Create network
     openstack.cloud.network:
       cloud: "{{ cloud_name }}"  # name of the cloud specified in clouds.yaml
