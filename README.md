@@ -12,12 +12,7 @@ This playbook currently handles:
 - Creates an instance on that private network and subnet
 
 TODO:
-- Grab Glance image uuid for Ubuntu 20.04 LTS (make second task/role to handle this?)
-- Create a router, bridge the External network with private
-- Allocate and assign floating IP to instance
-- Open port 22 within certbot instance
 - Install NGINX to the instance (additional task/role)
-- Configure NGINX with a specified domain
 - Prepare Kolla globals for ACME: https://docs.openstack.org/kolla-ansible/victoria/admin/acme.html
 - configure SSL using Kolla Ansible
 

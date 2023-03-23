@@ -92,3 +92,11 @@
       wait: true
       timeout: 180
     register: floating_ip
+
+- name: Prepare certbot instance
+  hosts: "{{ floating_ip.name }}"
+  tasks:
+    - name: Install nginx
+      ansible.builtin.apt:
+        name: nginx
+        state: present
