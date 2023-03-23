@@ -1,10 +1,13 @@
 ---
 cloud_name: openstack
+private_network: private
 subnet_name: subnet
 subnet_cidr: 192.168.0.1/24
 dns_nameservers:
   - 1.1.1.1
   - 8.8.8.8
+router_name: router
+external_network: External
 instance_name: certbot
 ssh_key: key
-instance_flavor: c1.micro
+instance_flavor: gen.small

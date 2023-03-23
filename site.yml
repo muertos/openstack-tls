@@ -1,10 +1,31 @@
 # Deploy a certbot instance on a private network
 # Populate ./vars/globals.yml as needed
+#
+# TODO: determine flavors
+#       prov floating ip and associate
 
 - hosts: localhost
   vars_files:
     - vars/globals.yml
   tasks:
+  - name: Delete existing certbot compute instance
+    openstack.cloud.server:
+      cloud: "{{ cloud_name }}"
+      name: "{{ instance_name }}"
+      state: absent
+
+  - name: Delete existing router
+    openstack.cloud.router:
+      cloud: "{{ cloud_name }}"
+      state: absent
+      name: "{{ router_name }}"
+
+  - name: Delete existing subnet
+    openstack.cloud.subnet:
+      cloud: "{{ cloud_name }}"
+      state: absent
+      name: "{{ subnet_name }}"
+
   - name: grab images
     openstack.cloud.image_info:
     register: result
@@ -24,9 +45,9 @@
 
   - name: Create network
     openstack.cloud.network:
-      cloud: "{{ cloud_name }}"  # name of the cloud specified in clouds.yaml
+      cloud: "{{ cloud_name }}"
       state: present
-      name: private
+      name: "{{ private_network }}"
       external: false
     register: network_details
 
@@ -39,6 +60,17 @@
       cidr: "{{ subnet_cidr }}"
       dns_nameservers: "{{ dns_nameservers }}"
     register: subnet_details
+
+  - name: Create router
+    openstack.cloud.router:
+      cloud: "{{ cloud_name }}"
+      state: present
+      name: "{{ router_name }}"
+      network: "{{ external_network }}"
+      interfaces:
+        - net: "{{ private_network }}"
+          subnet: "{{ subnet_details.subnet.id }}"
+
 
   - name: Deploy a compute instance
     openstack.cloud.server:
