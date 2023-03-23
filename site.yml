@@ -91,3 +91,4 @@
       server: "{{ instance_name }}"
       wait: true
       timeout: 180
+    register: floating_ip
