@@ -1,0 +1,54 @@
+# Deploy a certbot instance on a private network
+# Populate ./vars/globals.yml as needed
+
+- hosts: localhost
+  vars_files:
+    - vars/globals.yml
+  tasks:
+  - name: grab images
+    openstack.cloud.image_info:
+    register: result
+
+  - name: find ubuntu 22 image id
+    set_fact:
+      ubuntu_image_uuid: "{{ item.id }}"
+    loop: "{{ result.images }}"
+    when: "'Ubuntu 22' in item.name"
+
+  - name: Add SSH key
+    openstack.cloud.keypair:
+      cloud: "{{ cloud_name }}"
+      state: present
+      name: "{{ ssh_key }}"
+      public_key_file: "{{ ansible_user_dir }}/.ssh/id_rsa.pub"
+
+  - name: Create network
+    openstack.cloud.network:
+      cloud: "{{ cloud_name }}"  # name of the cloud specified in clouds.yaml
+      state: present
+      name: private
+      external: false
+    register: network_details
+
+  - name: Create subnet
+    openstack.cloud.subnet:
+      cloud: "{{ cloud_name }}"
+      state: present
+      network_name: "{{ network_details.network.id }}"
+      name: "{{ subnet_name }}"
+      cidr: "{{ subnet_cidr }}"
+      dns_nameservers: "{{ dns_nameservers }}"
+    register: subnet_details
+
+  - name: Deploy a compute instance
+    openstack.cloud.server:
+      cloud: "{{ cloud_name }}"
+      state: present
+      name: "{{ instance_name }}"
+      image: "{{ ubuntu_image_uuid }}"
+      key_name: "{{ ssh_key }}"
+      timeout: 200
+      flavor: "{{ instance_flavor }}"
+      auto_ip: no
+      nics:
+        - net-id: "{{ network_details.network.id }}"
