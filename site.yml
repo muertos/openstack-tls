@@ -1,8 +1,5 @@
 # Deploy a certbot instance on a private network
-# Populate ./vars/globals.yml as needed
-#
-# TODO: determine flavors
-#       prov floating ip and associate
+# Relies on /etc/openstack/clouds.yaml for auth
 
 - hosts: localhost
   vars_files:
@@ -26,6 +23,7 @@
       state: absent
       name: "{{ subnet_name }}"
 
+  
   - name: grab images
     openstack.cloud.image_info:
     register: result
@@ -84,3 +82,12 @@
       auto_ip: no
       nics:
         - net-id: "{{ network_details.network.id }}"
+
+  - name: Attach floating IP
+    openstack.cloud.floating_ip:
+      cloud: "{{ cloud_name }}"
+      state: present
+      network: "{{ external_network }}"
+      server: "{{ instance_name }}"
+      wait: true
+      timeout: 180
