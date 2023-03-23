@@ -9,5 +9,9 @@ dns_nameservers:
 router_name: router
 external_network: External
 instance_name: certbot
+instance_sec_groups:
+- SSH ingress
+- HTTP ingress
+- HTTPS ingress
 ssh_key: key
 instance_flavor: gen.small

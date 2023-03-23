@@ -23,7 +23,6 @@
       state: absent
       name: "{{ subnet_name }}"
 
-  
   - name: grab images
     openstack.cloud.image_info:
     register: result
@@ -82,6 +81,7 @@
       auto_ip: no
       nics:
         - net-id: "{{ network_details.network.id }}"
+      security_groups: "{{ instance_sec_groups }}"
 
   - name: Attach floating IP
     openstack.cloud.floating_ip:
